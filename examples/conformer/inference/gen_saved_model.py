@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+sys.path.append('/mydata/hassan/TensorFlowASR')
+
 import os
 import fire
 
@@ -20,7 +23,7 @@ from tensorflow_asr.utils import env_util
 logger = env_util.setup_environment()
 import tensorflow as tf
 
-DEFAULT_YAML = os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.yml")
+DEFAULT_YAML = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../config.yml")
 
 
 from tensorflow_asr.configs.config import Config

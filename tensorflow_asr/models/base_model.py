@@ -53,10 +53,11 @@ class BaseModel(tf.keras.Model):
         self,
         filepath,
         by_name=False,
-        skip_mismatch=False,
+        skip_mismatch=True,
         options=None,
     ):
         with file_util.read_file(filepath) as path:
+            print(skip_mismatch)
             super().load_weights(filepath=path, by_name=by_name, skip_mismatch=skip_mismatch, options=options)
 
     @property

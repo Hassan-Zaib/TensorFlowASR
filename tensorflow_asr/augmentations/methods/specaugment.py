@@ -68,6 +68,10 @@ class TimeMasking(AugmentationMethod):
             t = tf.random.uniform([], minval=0, maxval=self.mask_factor, dtype=tf.int32)
             t = tf.minimum(t, tf.cast(tf.cast(T, dtype=tf.float32) * self.p_upperbound, dtype=tf.int32))
             t0 = tf.random.uniform([], minval=0, maxval=(T - t), dtype=tf.int32)
+            
+            
+            
+            print(tf.ones([t0, F, V], dtype=spectrogram.dtype))
             mask = tf.concat(
                 [
                     tf.ones([t0, F, V], dtype=spectrogram.dtype),

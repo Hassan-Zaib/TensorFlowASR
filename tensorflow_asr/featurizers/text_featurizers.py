@@ -170,13 +170,18 @@ class CharFeaturizer(TextFeaturizer):
         self.tokens2indices = {}
         self.tokens = []
         index = 1 if self.blank == 0 else 0
+        # print(self.tokens2indices)
         for line in lines:
-            line = self.preprocess_text(line)
+            line = self.preprocess_text(line) # 'the_'
+            # print(line)
             if line.startswith("#") or not line:
                 continue
             self.tokens2indices[line[0]] = index
+            # print(self.tokens2indices, line[0], index)
             self.tokens.append(line[0])
             index += 1
+        print(self.tokens2indices)
+        
         if self.blank is None:
             self.blank = len(self.tokens)  # blank not at zero
         self.non_blank_tokens = self.tokens.copy()

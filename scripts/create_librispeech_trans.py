@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+sys.path.append('/mydata/hassan/TensorFlowASR')
+
 import os
 import glob
 import argparse
@@ -36,7 +39,7 @@ args.output = preprocess_paths(args.output)
 
 transcripts = []
 
-text_files = glob.glob(os.path.join(args.dir, "**", "*.txt"), recursive=True)
+text_files = glob.glob(os.path.join(args.dir, "**", *."txt"), recursive=True)
 
 for text_file in tqdm(text_files, desc="[Loading]"):
     current_dir = os.path.dirname(text_file)

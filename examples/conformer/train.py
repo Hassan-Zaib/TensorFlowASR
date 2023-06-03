@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+sys.path.append('/mydata/hassan/TensorFlowASR')
 import os
 import fire
 import math
@@ -80,6 +82,7 @@ def main(
         if pretrained:
             conformer.load_weights(pretrained, by_name=True, skip_mismatch=True)
         conformer.summary(line_length=100)
+        print("Initiating Optimizer")
         optimizer = tf.keras.optimizers.Adam(
             TransformerSchedule(
                 d_model=conformer.dmodel,
@@ -88,12 +91,14 @@ def main(
             ),
             **config.learning_config.optimizer_config
         )
+        print("Model Compiling Started")
         conformer.compile(
             optimizer=optimizer,
             experimental_steps_per_execution=spx,
             global_batch_size=global_batch_size,
             blank=text_featurizer.blank,
         )
+        print("Compiling successful")
 
     callbacks = [
         tf.keras.callbacks.ModelCheckpoint(**config.learning_config.running_config.checkpoint),

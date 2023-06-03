@@ -11,6 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import sys
+sys.path.append('/mydata/hassan/TensorFlowASR')
 
 import os
 import fire
@@ -61,7 +63,8 @@ def main(
         config=config, speech_featurizer=speech_featurizer, text_featurizer=text_featurizer
     )
     batch_size = bs or config.learning_config.running_config.batch_size
-    test_data_loader = test_dataset.create(batch_size)
+    #batch_size = 64
+    test_data_loader = test_dataset.create(24)
 
     exec_helpers.run_testing(model=conformer, test_dataset=test_dataset, test_data_loader=test_data_loader, output=output)
 
