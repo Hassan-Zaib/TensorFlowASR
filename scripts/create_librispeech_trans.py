@@ -39,7 +39,7 @@ args.output = preprocess_paths(args.output)
 
 transcripts = []
 
-text_files = glob.glob(os.path.join(args.dir, "**", *."txt"), recursive=True)
+text_files = glob.glob(os.path.join(args.dir, "**/*.txt"), recursive=True)
 
 for text_file in tqdm(text_files, desc="[Loading]"):
     current_dir = os.path.dirname(text_file)

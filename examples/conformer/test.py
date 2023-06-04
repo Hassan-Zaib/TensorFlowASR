@@ -15,7 +15,7 @@ import sys
 sys.path.append('/mydata/hassan/TensorFlowASR')
 
 import os
-import fire
+import fire 
 from tensorflow_asr.utils import env_util
 
 logger = env_util.setup_environment()
